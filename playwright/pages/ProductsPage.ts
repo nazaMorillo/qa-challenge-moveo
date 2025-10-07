@@ -9,22 +9,29 @@ export class ProductsPage {
     constructor(page: Page) {
         this.page = page;
         this.product = this.page.locator('[data-test="inventory-item"]');
-        this.addtoCartBTN = this.page.locator('[data-test="add-to-cart-sauce-labs-backpack"]")');      
+        this.addtoCartBTN = this.page.getByText('Add to cart').first();      
         this.cartBTN = this.page.locator('[data-test="shopping-cart-link"]');
     }
 
     async isLoaded() {
         await expect(this.page.locator('.title')).toHaveText('Products');
-         // Expects page to have a heading with the name of Installation.
+        await expect(this.page).toHaveURL(/inventory/)
+        // Expects page to have a heading with the name of Installation.
     }
     async isVisibleSomeProduct() {
          // Expects page to have a heading with the name of Installation.
         await expect(this.product.first()).toBeVisible();
     }
 
-    async selectAProduct() {
+    async selectFirstProduct() {
          // Expects page to have a heading with the name of Installation.
-        await expect(this.addtoCartBTN.click());
+        await this.addtoCartBTN.click();
     }
+
+    async gotoCArt() {
+         // Expects page to have a heading with the name of Installation.
+        await this.cartBTN.click();
+        await expect(this.page).toHaveURL(/cart/);
+    }
+
 }
-////*[contains(., "Add to cart")][1]

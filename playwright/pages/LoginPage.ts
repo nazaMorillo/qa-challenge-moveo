@@ -6,7 +6,6 @@ export class LoginPage {
     readonly page: Page;
 
     // 2. Definición de Selectores (Localizadores)
-    // Usamos localizadores sencillos para la página de inicio de SauceDemo
     readonly usernameInput;
     readonly passwordInput;
     readonly loginButton;
@@ -17,10 +16,7 @@ export class LoginPage {
         this.usernameInput = this.page.locator('[data-test="username"]');
         this.passwordInput = this.page.locator('[data-test="password"]');
         this.loginButton = this.page.locator('[data-test="login-button"]');
-    }
-
-    // 3. Métodos de Acción (Lógica)
-    
+    }    
     // Método para navegar a la URL base
     async goto() {
         await this.page.goto('https://www.saucedemo.com/', { timeout: 60000 });

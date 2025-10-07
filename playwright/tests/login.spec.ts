@@ -1,16 +1,12 @@
 import { test, expect, Page } from '@playwright/test';
-// 1. ENLAZAR: Importar la clase Page Object creada
 import { LoginPage } from '../pages/LoginPage';
 import { ProductsPage } from '../pages/ProductsPage';
-
-
 
 
 test.describe('SauceDemo', () => {
     test('Successful login with standard_user', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const productsPage = new ProductsPage(page);
-
         // Given I open the login page
         await loginPage.goto();
 
