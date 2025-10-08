@@ -9,6 +9,7 @@ export class LoginPage {
     readonly usernameInput;
     readonly passwordInput;
     readonly loginButton;
+    readonly errorLabel;
 
     // Constructor: Inicializa la instancia de la página
     constructor(page: Page) {
@@ -16,6 +17,7 @@ export class LoginPage {
         this.usernameInput = this.page.locator('[data-test="username"]');
         this.passwordInput = this.page.locator('[data-test="password"]');
         this.loginButton = this.page.locator('[data-test="login-button"]');
+        this.errorLabel = this.page.locator('[data-test="error"]');
     }    
     // Método para navegar a la URL base
     async goto() {
@@ -27,5 +29,9 @@ export class LoginPage {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
+    }
+
+    async errorMessageValidation(errorMessage: string) {
+        await expect(this.errorLabel).toHaveText(errorMessage);
     }
 }
