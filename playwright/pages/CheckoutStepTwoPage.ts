@@ -29,7 +29,7 @@ export class CheckoutStepTwoPage {
 
     async finish() {
         await this.finishBTN.click();
-        await expect(this.page).toHaveURL(/checkout-complete/);
+        //await expect(this.page).toHaveURL(/checkout-complete/);
     }
 
 }

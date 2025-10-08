@@ -5,7 +5,8 @@ export class CheckoutStepOnePage {
     readonly firstNameInput;
     readonly lastNameInput;
     readonly postalCodeInput;
-    readonly continueButton;   
+    readonly continueButton;
+    readonly errorLabel;  
 
     constructor(page: Page) {
         this.page = page;
@@ -13,6 +14,7 @@ export class CheckoutStepOnePage {
         this.lastNameInput = this.page.locator('[data-test="lastName"]');
         this.postalCodeInput = this.page.locator('[data-test="postalCode"]');
         this.continueButton = this.page.locator('[data-test="continue"]');
+        this.errorLabel = this.page.locator('[data-test="error"]');
     }
 
     async fillFirstName(firstName: string) {
@@ -36,6 +38,14 @@ export class CheckoutStepOnePage {
         await this.fillLastName(lastName);
         await this.fillPostalCode(postalCode);
         await this.continue();
+    }
+
+    async isRedirectedToStepTwo() {
         await expect(this.page).toHaveURL(/checkout-step-two/);
     }
+
+    async errorMessageValidation(errorMessage: string) {
+        await expect(this.errorLabel).toHaveText(errorMessage);
+    }
+
 }

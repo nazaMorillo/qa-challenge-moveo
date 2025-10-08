@@ -39,10 +39,8 @@ const User = {
 
         // And I complete the checkout
         await checkoutStepTwoPage.finish();
-        //await page.click('[data-test="finish"]');
-
         // Then I see the “Thank you for your order!” confirmation
         await checkoutCompletePage.isDisplayedTheMessage(User.checkoutConfirmationMessage);
-        //await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
+
     });
 });
