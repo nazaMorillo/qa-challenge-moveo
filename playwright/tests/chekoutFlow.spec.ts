@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { ProductsPage } from '../pages/ProductsPage';
+import { InventoryPage } from '../pages/InventoryPage.ts';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutStepOnePage } from '../pages/CheckoutStepOnePage.ts';
 import { CheckoutStepTwoPage } from '../pages/CheckoutStepTwoPage.ts';
@@ -19,7 +19,7 @@ const User = {
 
     test('Checkout flow for standard_user', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new ProductsPage(page);
+        const productsPage = new InventoryPage(page);
         const cartPage = new CartPage(page);
         const checkoutStepOnePage = new CheckoutStepOnePage(page);
         const checkoutStepTwoPage = new CheckoutStepTwoPage(page);

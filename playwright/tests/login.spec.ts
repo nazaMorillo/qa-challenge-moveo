@@ -1,12 +1,12 @@
 import { test, expect, Page } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { ProductsPage } from '../pages/ProductsPage';
+import { InventoryPage } from '../pages/InventoryPage';
 
 
 test.describe('SauceDemo homepage', () => {
     test('Successful login with standard_user', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new ProductsPage(page);
+        const productsPage = new InventoryPage(page);
         // Given I open the login page
         await loginPage.goto();
 
@@ -19,7 +19,7 @@ test.describe('SauceDemo homepage', () => {
 
     test('Try log in with locked out user', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new ProductsPage(page);
+        const productsPage = new InventoryPage(page);
         // Given I open the login page
         await loginPage.goto();
 

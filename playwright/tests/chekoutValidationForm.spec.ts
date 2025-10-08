@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { ProductsPage } from '../pages/ProductsPage';
+import { InventoryPage } from '../pages/InventoryPage.ts';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutStepOnePage } from '../pages/CheckoutStepOnePage.ts';
-import { CheckoutStepTwoPage } from '../pages/CheckoutStepTwoPage.ts';
-import { CheckoutCompletePage } from '../pages/CheckoutCompletePage.ts';
 
 test.describe('Checkout Form Validation', () => {
     const User = {
@@ -19,7 +17,7 @@ test.describe('Checkout Form Validation', () => {
         
     test.beforeEach(async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new ProductsPage(page);
+        const productsPage = new InventoryPage(page);
         const cartPage = new CartPage(page);
         
         // Given I am at Checkout: Your Information

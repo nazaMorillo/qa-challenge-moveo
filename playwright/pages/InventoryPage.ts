@@ -1,6 +1,6 @@
 import { type Page, expect } from '@playwright/test';
 // Page Object Model for Products Page (after login)
-export class ProductsPage {
+export class InventoryPage {
     readonly page: Page;
     readonly product;
     readonly addtoCartBTN;
