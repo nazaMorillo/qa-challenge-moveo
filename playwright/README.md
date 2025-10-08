@@ -1,4 +1,27 @@
+
 # QA Challenge Moveo - Playwright Suite
+
+## Quick Start
+
+### 1. Install Git
+
+**Windows:**
+1. Download Git from [git-scm.com](https://git-scm.com/download/win)
+2. Run the installer and follow the setup wizard.
+
+**Linux:**
+```bash
+sudo apt update
+sudo apt install git
+```
+
+### 2. Clone the Project
+
+Open your terminal in an empty folder and run:
+```bash
+git clone https://github.com/nazaMorillo/qa-challenge-moveo.git
+```
+---
 
 
 
@@ -19,6 +42,20 @@ Steps:
   node --version
   npm --version
   ```
+
+  **Linux:**
+```bash
+# Download and install nvm:
+sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+# is not necesary reboot the shell
+\. "$HOME/.nvm/nvm.sh"
+# Download and install Node.js:
+nvm install 22
+# Verify the Node.js version:
+node -v # Should print "v22.20.0".
+# Verify the npm version:
+npm -v # Debería mostrar "10.9.3".
+```
 
 ---
 
