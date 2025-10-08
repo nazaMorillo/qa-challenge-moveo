@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { ProductsPage } from '../pages/ProductsPage';
 
 
-test.describe('SauceDemo', () => {
+test.describe('SauceDemo homepage', () => {
     test('Successful login with standard_user', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const productsPage = new ProductsPage(page);

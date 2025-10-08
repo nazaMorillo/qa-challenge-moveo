@@ -1,6 +1,6 @@
-import { type Page, expect } from '@playwright/test';
+import { type Page, expect  } from '@playwright/test';
 
-export class CheckoutStepOne {
+export class CheckoutStepOnePage {
     readonly page: Page;
     readonly firstNameInput;
     readonly lastNameInput;
@@ -36,5 +36,6 @@ export class CheckoutStepOne {
         await this.fillLastName(lastName);
         await this.fillPostalCode(postalCode);
         await this.continue();
+        await expect(this.page).toHaveURL(/checkout-step-two/);
     }
 }
