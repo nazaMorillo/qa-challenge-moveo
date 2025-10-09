@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { UserCredentials } from '../credentials';
 import { LoginPage } from '../pages/LoginPage.ts';
 import { InventoryPage } from '../pages/InventoryPage.ts';
 import { CartPage } from '../pages/CartPage.ts';
@@ -9,15 +10,15 @@ import { CheckoutCompletePage } from '../pages/CheckoutCompletePage.ts';
 test.describe('Map to checkout flow', () => {
 
 const User = {
+    credential: UserCredentials.standard_user,
     firstName: 'John',
     lastName: 'Doe',
     postalCode: '12345',
-    userName: 'standard_user',
-    password: 'secret_sauce',
     checkoutConfirmationMessage: 'Thank you for your order!'
 };
 
     test('Checkout flow for standard_user', async ({ page }) => {
+
         const loginPage = new LoginPage(page);
         const inventoryPage = new InventoryPage(page);
         const cartPage = new CartPage(page);
@@ -27,7 +28,7 @@ const User = {
 
         // Given I am logged in as standard_user
         await loginPage.goto();
-        await loginPage.login(User.userName, User.password);
+        await loginPage.login(User.credential.userName, User.credential.password);
 
         // When I add any product to the cart → go to cart → checkout
         await inventoryPage.selectFirstProduct()

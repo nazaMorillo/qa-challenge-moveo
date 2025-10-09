@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { UserCredentials } from '../credentials';
 import { LoginPage } from '../pages/LoginPage.ts';
 import { InventoryPage } from '../pages/InventoryPage.ts';
 import { CartPage } from '../pages/CartPage.ts';
@@ -6,12 +7,11 @@ import { CheckoutStepOnePage } from '../pages/CheckoutStepOnePage.ts';
 
 test.describe('Checkout Form Validation', () => {
     const User = {
-    firstName: 'John',
-    lastName: 'Doe',
-    postalCode: '',
-    userName: 'standard_user',
-    password: 'secret_sauce',
-    errorMessage: 'Error: Postal Code is required'
+        credential: UserCredentials.standard_user,
+        firstName: 'John',
+        lastName: 'Doe',
+        postalCode: '',
+        errorMessage: 'Error: Postal Code is required'
 };
 
         
@@ -22,7 +22,7 @@ test.describe('Checkout Form Validation', () => {
         
         // Given I am at Checkout: Your Information
         await loginPage.goto();
-        await loginPage.login(User.userName, User.password);
+        await loginPage.login(User.credential.userName, User.credential.password);
         await inventoryPage.selectFirstProduct()
         await inventoryPage.gotoCart();
         await cartPage.proceedToCheckout();
