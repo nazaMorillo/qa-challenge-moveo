@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { LoginPage } from '../pages/LoginPage.ts';
 import { InventoryPage } from '../pages/InventoryPage.ts';
-import { CartPage } from '../pages/CartPage';
+import { CartPage } from '../pages/CartPage.ts';
 import { CheckoutStepOnePage } from '../pages/CheckoutStepOnePage.ts';
 
 test.describe('Checkout Form Validation', () => {
@@ -17,14 +17,14 @@ test.describe('Checkout Form Validation', () => {
         
     test.beforeEach(async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new InventoryPage(page);
+        const inventoryPage = new InventoryPage(page);
         const cartPage = new CartPage(page);
         
         // Given I am at Checkout: Your Information
         await loginPage.goto();
         await loginPage.login(User.userName, User.password);
-        await productsPage.selectFirstProduct()
-        await productsPage.gotoCArt();
+        await inventoryPage.selectFirstProduct()
+        await inventoryPage.gotoCart();
         await cartPage.proceedToCheckout();
     });
 

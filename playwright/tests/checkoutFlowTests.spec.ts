@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { LoginPage } from '../pages/LoginPage.ts';
 import { InventoryPage } from '../pages/InventoryPage.ts';
-import { CartPage } from '../pages/CartPage';
+import { CartPage } from '../pages/CartPage.ts';
 import { CheckoutStepOnePage } from '../pages/CheckoutStepOnePage.ts';
 import { CheckoutStepTwoPage } from '../pages/CheckoutStepTwoPage.ts';
 import { CheckoutCompletePage } from '../pages/CheckoutCompletePage.ts';
@@ -19,7 +19,7 @@ const User = {
 
     test('Checkout flow for standard_user', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new InventoryPage(page);
+        const inventoryPage = new InventoryPage(page);
         const cartPage = new CartPage(page);
         const checkoutStepOnePage = new CheckoutStepOnePage(page);
         const checkoutStepTwoPage = new CheckoutStepTwoPage(page);
@@ -30,8 +30,8 @@ const User = {
         await loginPage.login(User.userName, User.password);
 
         // When I add any product to the cart → go to cart → checkout
-        await productsPage.selectFirstProduct()
-        await productsPage.gotoCArt();
+        await inventoryPage.selectFirstProduct()
+        await inventoryPage.gotoCart();
         await cartPage.proceedToCheckout();
 
         // And I fill First Name, Last Name, Postal Code with any valid values
@@ -41,6 +41,6 @@ const User = {
         await checkoutStepTwoPage.finish();
         // Then I see the “Thank you for your order!” confirmation
         await checkoutCompletePage.isDisplayedTheMessage(User.checkoutConfirmationMessage);
-
+// assertions
     });
 });

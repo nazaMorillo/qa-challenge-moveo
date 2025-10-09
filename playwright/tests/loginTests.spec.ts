@@ -6,7 +6,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 test.describe('SauceDemo homepage', () => {
     test('Successful login with standard_user', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new InventoryPage(page);
+        const inventoryPage = new InventoryPage(page);
         // Given I open the login page
         await loginPage.goto();
 
@@ -14,12 +14,11 @@ test.describe('SauceDemo homepage', () => {
         await loginPage.login('standard_user', 'secret_sauce');
 
         // Then I should see the products page
-        await productsPage.isLoaded();
+        await inventoryPage.isLoaded();
     });
 
     test('Try log in with locked out user', async ({ page }) => {
         const loginPage = new LoginPage(page);
-        const productsPage = new InventoryPage(page);
         // Given I open the login page
         await loginPage.goto();
 

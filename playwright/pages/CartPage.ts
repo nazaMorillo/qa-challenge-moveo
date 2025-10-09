@@ -3,16 +3,17 @@ import { type Page, expect } from '@playwright/test';
 export class CartPage {
     readonly page: Page;
     readonly cartItem;
+    readonly cartItems;
     readonly removeBTN;
     readonly continueShoppingBTN;
-    readonly checkoutButton;
+    readonly checkoutBTN;
 
     constructor(page: Page) {
         this.page = page;
-        this.cartItem = this.page.locator('.cart_item');
-        this.removeBTN = this.page.getByText('Remove').first();
-        this.continueShoppingBTN = this.page.locator('[data-test="continue-shopping"]');
-        this.checkoutButton = this.page.locator('[data-test="checkout"]');
+        this.cartItems = page.locator('[data-test="inventory-item"]');
+        this.removeBTN = page.getByText('[data-test="remove-sauce-labs-backpack"]').first();
+        this.continueShoppingBTN = page.locator('[data-test="continue-shopping"]');
+        this.checkoutBTN = page.locator('[data-test="checkout"]');
     }
 
     async isLoaded() {
@@ -28,6 +29,6 @@ export class CartPage {
     }
 
     async proceedToCheckout() {
-        await this.checkoutButton.click();
+        await this.checkoutBTN.click();
     }
 }

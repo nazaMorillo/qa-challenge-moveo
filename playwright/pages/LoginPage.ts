@@ -1,36 +1,36 @@
 import { type Page, expect } from '@playwright/test';
 
-// 1. CREACIÓN: Define la clase que representa el Page Object
+// Creation of a Page Object Model for the Login Page
 export class LoginPage {
-    // Propiedad para la instancia de la página de Playwright
+    // Property to the instance of Playwright
     readonly page: Page;
 
-    // 2. Definición de Selectores (Localizadores)
+    // Locators definition
     readonly usernameInput;
     readonly passwordInput;
     readonly loginButton;
     readonly errorLabel;
 
-    // Constructor: Inicializa la instancia de la página
+    // Constructor
     constructor(page: Page) {
         this.page = page;
-        this.usernameInput = this.page.locator('[data-test="username"]');
-        this.passwordInput = this.page.locator('[data-test="password"]');
-        this.loginButton = this.page.locator('[data-test="login-button"]');
-        this.errorLabel = this.page.locator('[data-test="error"]');
-    }    
-    // Método para navegar a la URL base
+        this.usernameInput = page.locator('[data-test="username"]');
+        this.passwordInput = page.locator('[data-test="password"]');
+        this.loginButton = page.locator('[data-test="login-button"]');
+        this.errorLabel = page.locator('[data-test="error"]');
+    }
+    // Action method to base URL redirect
     async goto() {
         await this.page.goto('https://www.saucedemo.com/', { timeout: 60000 });
     }
 
-    // Método para realizar una acción de login
+    // Action method to login
     async login(username: string, password: string) {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
-
+    // Assertion method to validate error message
     async errorMessageValidation(errorMessage: string) {
         await expect(this.errorLabel).toHaveText(errorMessage);
     }

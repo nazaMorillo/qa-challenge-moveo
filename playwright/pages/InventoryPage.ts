@@ -8,9 +8,9 @@ export class InventoryPage {
     
     constructor(page: Page) {
         this.page = page;
-        this.product = this.page.locator('[data-test="inventory-item"]');
-        this.addtoCartBTN = this.page.getByText('Add to cart').first();      
-        this.cartBTN = this.page.locator('[data-test="shopping-cart-link"]');
+        this.product = page.locator('[data-test="inventory-item"]');
+        this.addtoCartBTN = page.getByText('Add to cart').first();      
+        this.cartBTN = page.locator('[data-test="shopping-cart-link"]');
     }
 
     async isLoaded() {
@@ -28,7 +28,7 @@ export class InventoryPage {
         await this.addtoCartBTN.click();
     }
 
-    async gotoCArt() {
+    async gotoCart() {
          // Expects page to have a heading with the name of Installation.
         await this.cartBTN.click();
         await expect(this.page).toHaveURL(/cart/);

@@ -13,14 +13,14 @@ export class CheckoutStepTwoPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.summaryContainer = this.page.locator('.checkout_summary_container');
-        this.cancelBTN = this.page.locator('[data-test="cancel"]');
-        this.finishBTN = this.page.locator('[data-test="finish"]');
-        this.paymentInfo = this.page.locator('.summary_info > div:has-text("Payment Information")');
-        this.shippingInfo = this.page.locator('.summary_info > div:has-text("Shipping Information")');
-        this.itemTotal = this.page.locator('.summary_subtotal_label');
-        this.tax = this.page.locator('.summary_tax_label');
-        this.total = this.page.locator('.summary_total_label');
+        this.summaryContainer = page.locator('.checkout_summary_container');
+        this.cancelBTN = page.locator('[data-test="cancel"]');
+        this.finishBTN = page.locator('[data-test="finish"]');
+        this.paymentInfo = page.locator('.summary_info > div:has-text("Payment Information")');
+        this.shippingInfo = page.locator('.summary_info > div:has-text("Shipping Information")');
+        this.itemTotal = page.locator('.summary_subtotal_label');
+        this.tax = page.locator('.summary_tax_label');
+        this.total = page.locator('.summary_total_label');
     }
 
     async cancel() {
