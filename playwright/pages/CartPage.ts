@@ -2,7 +2,6 @@ import { type Page, expect } from '@playwright/test';
 // Page Object Model for Cart Page
 export class CartPage {
     readonly page: Page;
-    readonly cartItem;
     readonly cartItems;
     readonly removeBTN;
     readonly continueShoppingBTN;
