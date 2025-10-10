@@ -59,10 +59,10 @@ newman run BookingTestsAPI.postman_collection.json -e BookingEnvAPI.postman_envi
 ```bash
 curl -o- "https://dl-cli.pstmn.io/install/unix.sh" | sh
 ```
-- Run the collection the API Key is: Add API Ley ( PMAK-68e91092f00f610001954981-da29da5bffc1ea3ef345f23f165dc333d2 )
+- Login with the API Key
 
 ```bash
-postman login --with-api-key PMAK-68e91092f00f610001954981-da29da5bffc1ea3ef345f23f165dc333d2
+postman login --with-api-key ### "ADD API Key"
 
 postman collection run 8300976-af80148d-1718-4988-b73a-b3acdeea5892 -e 8300976-1c9fff34-3ce2-4efd-b031-0ed3e00fef8b
 ```
