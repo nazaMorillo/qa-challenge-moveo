@@ -64,5 +64,7 @@ curl -o- "https://dl-cli.pstmn.io/install/unix.sh" | sh
 ```bash
 postman login --with-api-key ### "ADD API Key"
 
-postman collection run 8300976-af80148d-1718-4988-b73a-b3acdeea5892 -e 8300976-1c9fff34-3ce2-4efd-b031-0ed3e00fef8b
+postman collection run 8300976-756409e9-4d57-4cf4-8133-94524b6d3821
 ```
+### The Collection could be share by link:
+ [https://postman.co/workspace/...](https://.postman.co/workspace/My-Workspace~eb2ad913-e062-4310-85ce-40ae9b0d772d/collection/8300976-af80148d-1718-4988-b73a-b3acdeea5892?action=share&creator=8300976)
