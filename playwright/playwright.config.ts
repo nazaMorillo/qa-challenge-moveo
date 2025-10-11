@@ -15,6 +15,15 @@ dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+module.exports = {
+  retries: 2, // Retry failed tests up to 2 times
+  use: {
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    trace: 'on-first-retry',
+  },
+};
+
 export default defineConfig({
   testDir: './tests',
   use: {

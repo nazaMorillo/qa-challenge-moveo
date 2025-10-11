@@ -21,7 +21,7 @@ export class LoginPage {
     }
     // Action method to base URL redirect
     async goto() {
-        await this.page.goto('https://www.saucedemo.com/', { timeout: 60000 });
+        await this.page.goto('https://www.saucedemo.com/');
     }
 
     // Action method to login
