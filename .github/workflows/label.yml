@@ -8,18 +8,9 @@
 name: CI Labeler
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'label.yml'
-      - 'playwright/**'
-      - 'postman/**'
-      - 'STRATEGY.md'
-  pull_request:
-    paths:
-      - 'playwright/**'
-      - 'postman/**'
-      - 'STRATEGY.md'
+    branches: ["main"]
+  pull_request: 
+    branches: ["main"]
 
 jobs:
   label:
