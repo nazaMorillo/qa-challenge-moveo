@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "756409e9-4d57-4cf4-8133-94524b6d3821",
+		"name": "RestfulBookerLoadTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8300976"
+	},
+	"item": [
+		{
+			"name": "RandomizePayloads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verificar que la respuesta sea exitosa",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Verificar que la respuesta tenga la estructura correcta",
+							"pm.test(\"Response has booking ID\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.have.property('bookingid');",
+							"    pm.expect(responseData.bookingid).to.be.a('number');",
+							"});",
+							"",
+							"// Verificar tiempo de respuesta",
+							"pm.test(\"Response time is acceptable\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+							"});",
+							"",
+							"// Log para monitoreo",
+							"console.log(\"Booking created successfully\");",
+							"console.log(\"Response time: \" + pm.response.responseTime + \"ms\");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generar fechas aleatorias",
+							"const today = new Date();",
+							"const futureDate = new Date(today);",
+							"futureDate.setDate(today.getDate() + Math.floor(Math.random() * 30) + 1);",
+							"",
+							"const checkoutDate = new Date(futureDate);",
+							"checkoutDate.setDate(futureDate.getDate() + Math.floor(Math.random() * 14) + 1);",
+							"",
+							"// Formatear fechas",
+							"const formatDate = (date) => date.toISOString().split('T')[0];",
+							"",
+							"// Opciones para additionalneeds",
+							"const needsOptions = ['Breakfast', 'Lunch', 'Dinner', 'WiFi', 'Parking', 'Sea View', 'Extra Bed', 'None'];",
+							"",
+							"// Guardar variables",
+							"pm.collectionVariables.set(\"randomFirstName\", pm.variables.replaceIn(\"{{$randomFirstName}}\"));",
+							"pm.collectionVariables.set(\"randomLastName\", pm.variables.replaceIn(\"{{$randomLastName}}\"));",
+							"pm.collectionVariables.set(\"randomInt\", Math.floor(Math.random() * 500) + 100);",
+							"pm.collectionVariables.set(\"randomBoolean\", Math.random() > 0.5);",
+							"pm.collectionVariables.set(\"randomDateRecent\", formatDate(futureDate));",
+							"pm.collectionVariables.set(\"randomDateFuture\", formatDate(checkoutDate));",
+							"pm.collectionVariables.set(\"randomNeeds\", needsOptions[Math.floor(Math.random() * needsOptions.length)]);",
+							"",
+							"// Agregar delay aleatorio entre requests (1-5 segundos)",
+							"const randomDelay = Math.floor(Math.random() * 4000) + 1000;",
+							"console.log(`Delay: ${randomDelay}ms`);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"{{$randomFirstName}}\",\n    \"lastname\": \"{{$randomLastName}}\",\n    \"totalprice\": {{$randomInt}},\n    \"depositpaid\": {{$randomBoolean}},\n    \"bookingdates\": {\n        \"checkin\": \"{{$randomDateRecent}}\",\n        \"checkout\": \"{{$randomDateFuture}}\"\n    },\n    \"additionalneeds\": \"{{$randomNeeds}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl ",
+			"value": ""
+		},
+		{
+			"key": "randomFirstName",
+			"value": ""
+		},
+		{
+			"key": "randomLastName",
+			"value": ""
+		},
+		{
+			"key": "randomInt",
+			"value": ""
+		},
+		{
+			"key": "randomBoolean",
+			"value": ""
+		},
+		{
+			"key": "randomDateRecent",
+			"value": ""
+		},
+		{
+			"key": "randomDateFuture",
+			"value": ""
+		},
+		{
+			"key": "randomNeeds",
+			"value": ""
+		}
+	]
+}
