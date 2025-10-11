@@ -186,7 +186,7 @@ module.exports = {
 
 ## Notes
 
-The following practices are recommended for stabilizing your test suite in CI (see ISTQB for foundational principles):
+The following practices are recommended for stabilizing your test suite in CI:
 
 - **Screenshots & Video:** Capture screenshots and video on test failure to support defect analysis and reporting.
 - **Retries:** Use automatic retries for flaky tests, but always investigate and address root causes.
