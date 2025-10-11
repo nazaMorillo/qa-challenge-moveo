@@ -6,7 +6,20 @@
 # https://github.com/actions/labeler
 
 name: CI Labeler
-on: [pull_request_target]
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'label.yml'
+      - 'playwright/**'
+      - 'postman/**'
+      - 'STRATEGY.md'
+  pull_request:
+    paths:
+      - 'playwright/**'
+      - 'postman/**'
+      - 'STRATEGY.md'
 
 jobs:
   label:
