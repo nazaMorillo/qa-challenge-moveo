@@ -50,7 +50,7 @@ jobs:
         run: |
           npm install -g newman newman-reporter-htmlextra
 
-      - name: 🏃 Run Postman Collection with Newman
+      - name: Run Postman Collection with Newman
         # Adjust paths as necessary
         run: newman run ./postman/restful_booker_collection.json -e ./postman/restful_booker_env.json --reporters cli,htmlextra --reporter-htmlextra-export postman-reports/api-report.html
 

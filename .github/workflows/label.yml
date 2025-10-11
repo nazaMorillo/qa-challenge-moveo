@@ -24,7 +24,6 @@ jobs:
     - name: "Show environment variables"
       run: |
         echo "This is platform value: $RUNNER_OS"
-        echo "This is region value: $RUNNER_REGION"
 
 
     - uses: actions/labeler@v4
